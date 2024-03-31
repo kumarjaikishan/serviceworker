@@ -21,7 +21,7 @@ const sendemail = async (receiver,subject, message) => {
     return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.error('Error sending email:', error);
+                console.error('Error sending email: ', error);
                 // Reject the promise with the error
                 reject(error);
             } else {
