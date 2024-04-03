@@ -39,21 +39,28 @@ worker.on('completed', job => {
 worker.on('failed', (job, err) => {
     console.log(`${job.id} has failed - ${err}`);
 })
-const worker2 = new Worker('firebase_push_notification',
-    pushNotification,
-    {
-        connection: new IORedis(process.env.REDIS_URIfulle, {
-            maxRetriesPerRequest: null,
-        }),
-    });
+// const worker2 = new Worker('firebase_push_notification',
+//     pushNotification,
+//     {
+//         connection: new IORedis(process.env.REDIS_URIfulle, {
+//             maxRetriesPerRequest: null,
+//         }),
+//     });
 
-worker2.on('completed', job => {
-    console.log(`${job.id} has completed- Push Notification`);
-})
+// worker2.on('completed', job => {
+//     console.log(`${job.id} has completed- Push Notification`);
+// })
 
-worker2.on('failed', (job, err) => {
-    console.log(`${job.id} has failed - ${err}`);
-})
+// worker2.on('failed', (job, err) => {
+//     console.log(`${job.id} has failed - ${err}`);
+// })
+
+app.get('/', (req, res) => {
+    return res.status(200).json({
+      msg: "Welcome to the Service Worker"
+    })
+  })
+
 app.listen(port, () => {
     console.log(`server listening at ${port}`);
   })
