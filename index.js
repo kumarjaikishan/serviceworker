@@ -1,16 +1,7 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 5000;
+var http = require('http');
 require('./worker')
-
-
-app.get('/', (req, res) => {
-    return res.status(200).json({
-        msg: "Welcome to the Service Worker"
-    })
-})
-
-app.listen(port, () => {
-    console.log(process.env.REDIS_URIfulle);
-    console.log(`server listening at ${port}`);
-})
+//create a server object:
+http.createServer(function (req, res) {
+  res.write('A Monk with Jai kishan in Cloud'); //write a response to the client
+  res.end(); //end the response
+}).listen(80);
